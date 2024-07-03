@@ -1,0 +1,45 @@
+import styled from "styled-components";
+
+export const Root = styled.div`
+  padding: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 484px;
+  height: 500px;
+  color: #a0a0a0;
+  background: #000;
+  @media (max-width: 800px) {
+    padding: 22px;
+    height: 300px;
+  }
+  @media (max-width: 550px) {
+    width: min-content;
+    justify-content: space-between;
+  }
+`;
+
+export const Title = styled.h1`
+  font-size: 48px;
+  font-weight: 700;
+  @media (max-width: 800px) {
+    font-size: 28px;
+  }
+`;
+
+export const Image = styled.img`
+  width: 396px;
+  height: 200px;
+  object-fit: contain;
+  @media (max-width: 800px) {
+    width: 250px;
+    height: 100px;
+  }
+`;
+
+export const Info = styled.div`
+  font-size: 17px;
+  @media (max-width: 800px) {
+   font-size: 15px;
+  }
+`;
