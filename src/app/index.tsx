@@ -19,6 +19,7 @@ interface PokemonTypes {
 
 function App() {
   const [data, setData] = useState<Array<DataTypes>>([]);
+  // Какой тип?
   const [pokemon, setPokemon] = useState<any>([]);
 
   useEffect(() => {
@@ -49,6 +50,7 @@ function App() {
     }
   }, [data]);
 
+  // Какой тип?
   useEffect(() => {
     let item: any = fetchData(pokemon.url);
     fetch(item);
