@@ -82,23 +82,24 @@ function App() {
               />
             ))}
           </Buttons>
-          {pokemon && (
-            <Card
-              name={pokemon.name}
-              picture={
-                loading ? (
-                  <Loader />
-                ) : (
-                  <Image src={pokemon.picture} alt={pokemon.name} />
-                )
-              }
-              alt={pokemon.name}
-              moves={pokemon.moves}
-              id={pokemon.id}
-              height={pokemon.height}
-              attack={pokemon.attack}
-            />
-          )}
+          <div>
+            {pokemon && (
+              <Card
+                name={pokemon.name}
+                picture={
+                  loading ? <Loader />
+                    : (
+                    <Image src={pokemon.picture} alt={pokemon.name} />
+                  )
+                }
+                alt={pokemon.name}
+                moves={pokemon.moves}
+                id={pokemon.id}
+                height={pokemon.height}
+                attack={pokemon.attack}
+              />
+            )}
+          </div>
         </Main>
       </Container>
     </>

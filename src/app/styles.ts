@@ -43,6 +43,7 @@ export const Buttons = styled.div`
    justify-content: center;
   }
 `;
+
 export const Image = styled.img`
   width: 396px;
   height: 200px;

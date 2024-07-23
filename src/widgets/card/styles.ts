@@ -11,10 +11,10 @@ export const Root = styled.div`
   background: #000;
   @media (max-width: 800px) {
     padding: 22px;
+    width: 294px;
     height: 300px;
   }
   @media (max-width: 550px) {
-    width: min-content;
     justify-content: space-between;
   }
 `;

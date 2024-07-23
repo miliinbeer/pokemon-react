@@ -1,8 +1,10 @@
 import React from "react";
-import { Reload } from "./styles";
+import { Container,Reload } from "./styles";
 
 export const Loader = () => {
   return (
+    <Container>
       <Reload />
+    </Container>
   );
 };

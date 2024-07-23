@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+`
+
 export const Reload = styled.div`
   border-width: 0.5rem;
   border-style: solid;
@@ -34,5 +40,10 @@ export const Reload = styled.div`
     100% {
       transform: rotate(360deg);
     }
+  }
+  @media (max-width: 800px) {
+    width: 2.625rem;
+    height: 2.625rem;
+    border-width: 0.3rem;
   }
 `;
