@@ -1,21 +1,22 @@
 import React from "react";
-import { Root, Title, Image, Info } from "./styles";
+import { Root, Title, Info } from "./styles";
 
 interface CardProps {
   name: string
-  picture: string
+  picture: any
   alt: string
-  moves: string
+  moves: number
   id: string
   height: string
   attack: string
+
 }
 
-export const Card = ({ name, picture, alt, moves, id, height, attack }: CardProps) => {
+export const Card = ({ name, picture, alt, moves, id, height, attack}: CardProps) => {
   return (
     <Root>
       <Title>{name}</Title>
-      <Image src={picture} alt={alt} />
+      {picture}
       <Info>
         <p>Снялся в {moves} сериях </p>
         <p>Id: {id}</p>

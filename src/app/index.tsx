@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
-import { GlobalStyles, Container, Main, Buttons } from "./styles";
+import { GlobalStyles, Container, Main, Buttons, Image } from "./styles";
 import { Header } from "../layout/header";
 import { Card } from "../widgets/card";
 import { Button } from "../widgets/ui/button";
+import { Loader } from "../widgets/loader";
+
+// Redux-toolkit
 
 interface DataTypes {
   name: string;
@@ -10,29 +13,31 @@ interface DataTypes {
 }
 interface PokemonTypes {
   name: string;
-  sprites: { front_shiny: string };
-  moves: string;
+  picture: string;
+  moves: number;
   id: string;
   height: string;
-  stats: Array<{ base_stat: number }>;
+  attack: string;
 }
 
 function App() {
   const [data, setData] = useState<Array<DataTypes>>([]);
-  // Какой тип?
-  const [pokemon, setPokemon] = useState<any>([]);
+  const [pokemon, setPokemon] = useState<PokemonTypes>();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=10&offset=0")
       .then((response) => response.json())
-      .then((el) => setData(el.results));
+      .then((el) => {
+        setData(el.results);
+      });
     return () => {};
   }, []);
 
   const fetchData = useCallback((url: string) => {
     fetch(url)
       .then((response) => response.json())
-      .then((el: PokemonTypes) =>
+      .then((el: any) => {
         setPokemon({
           name: el.name.charAt(0).toUpperCase() + el.name.slice(1),
           picture: el.sprites.front_shiny,
@@ -40,8 +45,9 @@ function App() {
           id: el.id,
           height: el.height,
           attack: el.stats[1].base_stat,
-        })
-      );
+        });
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
@@ -50,15 +56,13 @@ function App() {
     }
   }, [data]);
 
-  // Какой тип?
-  useEffect(() => {
-    let item: any = fetchData(pokemon.url);
-    fetch(item);
-  }, [pokemon]);
-
   const handlerBtn = useCallback(
     async (name: string) => {
-      setPokemon(data.find((el) => el.name === name));
+      const dataFind = data.find((el) => el.name === name);
+      if (dataFind) {
+        setLoading(true);
+        fetchData(dataFind.url);
+      }
     },
     [data]
   );
@@ -78,15 +82,23 @@ function App() {
               />
             ))}
           </Buttons>
-          <Card
-            name={pokemon.name}
-            picture={pokemon.picture}
-            alt={pokemon.name}
-            moves={pokemon.moves}
-            id={pokemon.id}
-            height={pokemon.height}
-            attack={pokemon.attack}
-          />
+          {pokemon && (
+            <Card
+              name={pokemon.name}
+              picture={
+                loading ? (
+                  <Loader />
+                ) : (
+                  <Image src={pokemon.picture} alt={pokemon.name} />
+                )
+              }
+              alt={pokemon.name}
+              moves={pokemon.moves}
+              id={pokemon.id}
+              height={pokemon.height}
+              attack={pokemon.attack}
+            />
+          )}
         </Main>
       </Container>
     </>
