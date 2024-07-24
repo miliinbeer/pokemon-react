@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
-import { Root, Title, Info } from "./styles";
+import React from "react";
+import { Root, Title, Info, Image } from "./styles";
 
 interface CardProps {
   name: string
-  picture: ReactNode
+  picture: string
   alt: string
   moves: number
   id: string
@@ -16,7 +16,7 @@ export const Card = ({ name, picture, alt, moves, id, height, attack}: CardProps
   return (
     <Root>
       <Title>{name}</Title>
-      {picture}
+      <Image src={picture} alt={name} />
       <Info>
         <p>Снялся в {moves} сериях </p>
         <p>Id: {id}</p>

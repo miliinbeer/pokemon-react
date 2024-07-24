@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-`
-
 export const Reload = styled.div`
   border-width: 0.5rem;
   border-style: solid;

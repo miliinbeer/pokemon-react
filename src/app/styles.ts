@@ -43,21 +43,14 @@ export const Buttons = styled.div`
 `;
 
 export const Info = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 484px;
   height: 500px;
   background: #000;
   @media (max-width: 800px) {
     width: 294px;
     height: 300px;
-  }
-`;
-
-export const Image = styled.img`
-  width: 396px;
-  height: 200px;
-  object-fit: contain;
-  @media (max-width: 800px) {
-    width: 250px;
-    height: 100px;
   }
 `;

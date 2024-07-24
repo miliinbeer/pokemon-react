@@ -24,6 +24,16 @@ export const Title = styled.h1`
   }
 `;
 
+export const Image = styled.img`
+  width: 396px;
+  height: 200px;
+  object-fit: contain;
+  @media (max-width: 800px) {
+    width: 250px;
+    height: 100px;
+  }
+`;
+
 export const Info = styled.div`
   font-size: 17px;
   @media (max-width: 800px) {
