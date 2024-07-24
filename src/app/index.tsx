@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
-import { GlobalStyles, Container, Main, Buttons, Image } from "./styles";
+import { GlobalStyles, Container, Main, Buttons, Info, Image } from "./styles";
 import { Header } from "../layout/header";
 import { Card } from "../widgets/card";
 import { Button } from "../widgets/ui/button";
 import { Loader } from "../widgets/loader";
 
-// Redux-toolkit
+// TODO : Спросить правильная ли типизация у компонента Card
 
 interface DataTypes {
   name: string;
@@ -37,7 +37,7 @@ function App() {
   const fetchData = useCallback((url: string) => {
     fetch(url)
       .then((response) => response.json())
-      .then((el: any) => {
+      .then((el) => {
         setPokemon({
           name: el.name.charAt(0).toUpperCase() + el.name.slice(1),
           picture: el.sprites.front_shiny,
@@ -83,22 +83,25 @@ function App() {
             ))}
           </Buttons>
           <div>
-            {pokemon && (
-              <Card
-                name={pokemon.name}
-                picture={
-                  loading ? <Loader />
-                    : (
-                    <Image src={pokemon.picture} alt={pokemon.name} />
-                  )
-                }
-                alt={pokemon.name}
-                moves={pokemon.moves}
-                id={pokemon.id}
-                height={pokemon.height}
-                attack={pokemon.attack}
-              />
-            )}
+            <Info>
+              {pokemon ? (
+                <Card
+                  name={pokemon.name}
+                  picture={
+                    loading ? (
+                      <Loader />
+                    ) : (
+                      <Image src={pokemon.picture} alt={pokemon.name} />
+                    )
+                  }
+                  alt={pokemon.name}
+                  moves={pokemon.moves}
+                  id={pokemon.id}
+                  height={pokemon.height}
+                  attack={pokemon.attack}
+                />
+              ) : null}
+            </Info>
           </div>
         </Main>
       </Container>

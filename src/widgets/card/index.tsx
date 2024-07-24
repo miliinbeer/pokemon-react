@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Root, Title, Info } from "./styles";
 
 interface CardProps {
   name: string
-  picture: any
+  picture: ReactNode
   alt: string
   moves: number
   id: string

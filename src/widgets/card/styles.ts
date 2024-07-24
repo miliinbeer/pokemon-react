@@ -5,13 +5,10 @@ export const Root = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 484px;
   height: 500px;
   color: #a0a0a0;
-  background: #000;
   @media (max-width: 800px) {
     padding: 22px;
-    width: 294px;
     height: 300px;
   }
   @media (max-width: 550px) {
