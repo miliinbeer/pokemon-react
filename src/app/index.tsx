@@ -2,7 +2,8 @@ import React from "react";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { HeaderWidget } from "../widgets/header-widget";
-import { GlobalStyles, Container, Main, Buttons, Info } from "./styles";
+import { MainWidget } from "../widgets/main-widget";
+import { GlobalStyles, Container } from "./styles";
 
 function App() {
   return (
@@ -10,12 +11,7 @@ function App() {
       <Container>
         <GlobalStyles />
         <HeaderWidget />
-        <Main>
-          <Buttons></Buttons>
-          <div>
-            <Info></Info>
-          </div>
-        </Main>
+        <MainWidget />
       </Container>
     </Provider>
   );
