@@ -5,15 +5,23 @@ import { AppDispatch, StateTypes, DataTypes } from "../../shared/types";
 import { ButtonWidget } from "../button-widget";
 import { CardWidget } from "../card-widget";
 import { Loader } from "../../shared/ui/loader";
-import { Main, Buttons, Info } from "./styles";
+import { Main, Buttons, Info, Error } from "./styles";
 
 export const MainWidget: FunctionComponent = () => {
   const dispatch: AppDispatch = useDispatch();
-  const { data, selected, loading } = useSelector((state: StateTypes) => state.root);
+  const { data, selected, loading, error } = useSelector(
+    (state: StateTypes) => state.root
+  );
 
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (data.length > 0) {
+      dispatch(fetchInfo(data[0].url));
+    }
+  }, [data]);
 
   const fetchPokemons = useCallback(
     (url: string) => {
@@ -31,6 +39,10 @@ export const MainWidget: FunctionComponent = () => {
     },
     [data]
   );
+
+  if (error) {
+    return <Error>{error}</Error>;
+  }
 
   return (
     <Main>
