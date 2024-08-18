@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 export const Root = styled.div`
+  position: absolute;
+  max-width: 980px;
+  margin: 50px auto;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;

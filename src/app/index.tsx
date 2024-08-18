@@ -8,9 +8,9 @@ import { GlobalStyles, Container } from "./styles";
 function App() {
   return (
     <Provider store={store}>
+      <HeaderWidget />
       <Container>
         <GlobalStyles />
-        <HeaderWidget />
         <MainWidget />
       </Container>
     </Provider>
