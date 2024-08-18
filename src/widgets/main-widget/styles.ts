@@ -32,3 +32,10 @@ export const Info = styled.div`
     height: 300px;
   }
 `;
+
+export const Error = styled.div`
+  padding: 25px;
+  text-align: center;
+  text-transform: uppercase;
+  border: 2px #fff solid;
+`;
