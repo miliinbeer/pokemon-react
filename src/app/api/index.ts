@@ -32,7 +32,7 @@ export const rootReducer = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchData.pending, (state) => {
-        state.loading = true;
+        state.loading = false;
       })
       .addCase(fetchData.fulfilled, (state, action) => {
         state.loading = false;

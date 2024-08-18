@@ -4,11 +4,12 @@ import { fetchData, fetchInfo } from "../../app/api";
 import { AppDispatch, StateTypes, DataTypes } from "../../shared/types";
 import { ButtonWidget } from "../button-widget";
 import { CardWidget } from "../card-widget";
+import { Loader } from "../../shared/ui/loader";
 import { Main, Buttons, Info } from "./styles";
 
 export const MainWidget: FunctionComponent = () => {
   const dispatch: AppDispatch = useDispatch();
-  const { data, selected } = useSelector((state: StateTypes) => state.root);
+  const { data, selected, loading } = useSelector((state: StateTypes) => state.root);
 
   useEffect(() => {
     dispatch(fetchData());
@@ -44,15 +45,21 @@ export const MainWidget: FunctionComponent = () => {
       </Buttons>
       <div>
         <Info>
-          {selected && (
-            <CardWidget
-              name={selected.name}
-              picture={selected.picture}
-              moves={selected.moves}
-              id={selected.id}
-              height={selected.height}
-              attack={selected.attack}
-            />
+          {loading ? (
+            <Loader />
+          ) : (
+            <div>
+              {selected && (
+                <CardWidget
+                  name={selected.name}
+                  picture={selected.picture}
+                  moves={selected.moves}
+                  id={selected.id}
+                  height={selected.height}
+                  attack={selected.attack}
+                />
+              )}
+            </div>
           )}
         </Info>
       </div>
