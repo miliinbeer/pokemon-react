@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { Root, Title, Info } from "./styles";
-import pointer from "../../shared/icons/pointer";
+import pointer from "../../shared/ui/icons/pointer";
 
 export const HeaderWidget: FunctionComponent = () => {
   return (
