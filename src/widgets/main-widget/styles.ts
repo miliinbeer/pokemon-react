@@ -39,3 +39,7 @@ export const Error = styled.div`
   text-transform: uppercase;
   border: 2px #fff solid;
 `;
+
+export const LoaderContainer = styled.div`
+  margin: 0 auto;
+`;

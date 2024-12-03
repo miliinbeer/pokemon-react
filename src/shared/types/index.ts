@@ -30,8 +30,3 @@ export interface InfoTypes {
   loading: boolean;
   error: null | undefined | string;
 }
-
-export interface ButtonProps {
-  onClick: () => void;
-  children: string;
-}

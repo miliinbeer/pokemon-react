@@ -13,10 +13,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 `;
 
-export const Container = styled.div`
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0 auto;
+export const Content = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;

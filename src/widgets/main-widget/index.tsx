@@ -5,7 +5,7 @@ import { AppDispatch, StateTypes, DataTypes } from "../../shared/types";
 import { ButtonWidget } from "../button-widget";
 import { CardWidget } from "../card-widget";
 import { Loader } from "../../shared/ui/loader";
-import { Main, Buttons, Info, Error } from "./styles";
+import { Main, Buttons, Info, Error, LoaderContainer } from "./styles";
 
 export const MainWidget: FunctionComponent = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -43,6 +43,13 @@ export const MainWidget: FunctionComponent = () => {
   if (error) {
     return <Error>{error}</Error>;
   }
+  if (loading) {
+    return (
+      <LoaderContainer>
+        <Loader />
+      </LoaderContainer>
+    );
+  }
 
   return (
     <Main>
@@ -57,21 +64,15 @@ export const MainWidget: FunctionComponent = () => {
       </Buttons>
       <div>
         <Info>
-          {loading ? (
-            <Loader />
-          ) : (
-            <div>
-              {selected && (
-                <CardWidget
-                  name={selected.name}
-                  picture={selected.picture}
-                  moves={selected.moves}
-                  id={selected.id}
-                  height={selected.height}
-                  attack={selected.attack}
-                />
-              )}
-            </div>
+          {selected && (
+            <CardWidget
+              name={selected.name}
+              picture={selected.picture}
+              moves={selected.moves}
+              id={selected.id}
+              height={selected.height}
+              attack={selected.attack}
+            />
           )}
         </Info>
       </div>

@@ -1,8 +1,12 @@
 import React, { FunctionComponent } from "react";
-import { ButtonProps } from "../../shared/types";
 import { Button } from "./styles";
 
-export const ButtonWidget: FunctionComponent<ButtonProps> = ({
+interface Props {
+  onClick: () => void;
+  children: string;
+}
+
+export const ButtonWidget: FunctionComponent<Props> = ({
   onClick,
   children,
 }) => {
