@@ -41,7 +41,11 @@ export const MainWidget: FunctionComponent = () => {
   );
 
   if (error) {
-    return <Error>{error}</Error>;
+    return (
+      <Error>
+        {error}! Соединение работает с перебоями... Попробуйте включить VPN.
+      </Error>
+    );
   }
   if (loading) {
     return (
